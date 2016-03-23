@@ -3,8 +3,6 @@ defineClass('ZLPushAssistantViewController', {
     viewWillAppear: function(animated) {
         self.super().viewWillAppear(YES);
 
-        self.setTitle("接送助手");
-
         var backButton = PublicMethod.createNavBackButtonWithTitle("返回");
         backButton.addTarget_action_forControlEvents(self, "backBarButtonClicked:", 6);
         self.navigationItem().setLeftBarButtonItem(UIBarButtonItem.alloc().initWithCustomView(backButton));
@@ -12,6 +10,7 @@ defineClass('ZLPushAssistantViewController', {
         self.ui__tableView().setDelegate(self);
 
         ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
+            self.setChildArray(childArray);
 
         }), block(function() {
 
