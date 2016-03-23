@@ -4,7 +4,6 @@ defineClass('ZLPushAssistantViewController', {
         self.super().viewWillAppear(YES);
 
         var backButton = PublicMethod.createNavBackButtonWithTitle(NSLocalizedString("返回", null));
-        backButton.addTarget_action_forControlEvents(self, backBarButtonClicked:, 6);
         self.navigationItem().setLeftBarButtonItem(UIBarButtonItem.alloc().initWithCustomView(backButton));
 
         self.ui__tableView().setDelegate(self);
