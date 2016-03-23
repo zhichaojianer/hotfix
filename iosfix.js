@@ -10,12 +10,9 @@ defineClass('ZLPushAssistantViewController', {
         self.ui__tableView().setDelegate(self);
 
         ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
-           var index = [self.childArray indexOfObject:self.selectChildInfo];
         
            self.childArray = childArray;
-           self.selectChildInfo = self.childArray[index];
 
-           
         }), block(function() {
 
         }));
