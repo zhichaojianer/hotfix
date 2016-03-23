@@ -5,5 +5,11 @@ defineClass('ZLPushAssistantViewController', {
 
         self.ui__tableView().setDelegate(self);
 
+        ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
+ 
+        }), block(function() {
+
+        }));
+
     },
 });
