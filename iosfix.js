@@ -1,28 +1,29 @@
-require('ZLUMCount,DataManager,PromptAction,NSBundle'); // 1.6.5 修正老师无法发送消息的问题。
-defineClass('NoticeViewController', {
-    sendMessageAction: function() {
-        ZLUMCount.touchNotifyButton();
+require('PublicMethod,UIBarButtonItem,ServiceManager');
+defineClass('ZLPushAssistantViewController', {
+    viewWillAppear: function(animated) {
+        self.super().viewWillAppear(YES);
 
-        var dataManager = DataManager.sharedInstance();
-        if ((dataManager.userSetting().isTeacher() == 1) || dataManager.userSetting().hasChildClass() == 1) {
-            self.gotoSendNotifyViewController();
-        } else {
-            PromptAction.showPromptAlter(NSBundle.mainBundle().localizedStringForKey_value_table("Prompt_CantSend_Message", "", null));
-        }
-    },
-});
+        var backButton = PublicMethod.createNavBackButtonWithTitle(NSLocalizedString("返回", null));
+        backButton.addTarget_action_forControlEvents(self, @selector(backBarButtonClicked: ), UIControlEventTouchUpInside);
+        self.navigationItem().setLeftBarButtonItem(UIBarButtonItem.alloc().initWithCustomView(backButton));
 
-require('NSString,PromptAction,NSBundle'); // 1.6.5 取消客户端本地号段验证
-defineClass('NSString', {}, {
-    checkPhoneString: function(phone) {
-        var result = YES;
-        if (NSString.checkNullString(phone)) {
-            PromptAction.showErrorPrompt(NSBundle.mainBundle().localizedStringForKey_value_table("Prompt_PhoneCantBeNull", "", null));
-            result = NO;
-        } else if (phone.length() != 11) {
-            PromptAction.showErrorPrompt(NSBundle.mainBundle().localizedStringForKey_value_table("Prompt_PhoneFormatError", "", null));
-            result = NO;
-        }
-        return result;
+        self.ui_tableView().setDelegate(self);
+
+
+        ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
+            var index = self.childArray().indexOfObject(self.selectChildInfo());
+
+            self.setChildArray(childArray);
+            self.setSelectChildInfo(self.childArray[index]());
+            self.configSelectChild(self.selectChildInfo());
+
+            if (childArray.count() * 44 > 180) {
+                self.selectChildTableHeightConstraint().setConstant(180);
+            } else {
+                self.selectChildTableHeightConstraint().setConstant(childArray.count() * 44);
+            }
+        }), block(function() {
+
+        }));
     },
 });
