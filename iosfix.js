@@ -3,7 +3,7 @@ defineClass('ZLPushAssistantViewController', {
     viewWillAppear: function(animated) {
         self.super().viewWillAppear(YES);
 
-        var backButton = PublicMethod.createNavBackButtonWithTitle(NSLocalizedString("返回", null));
+        var backButton = PublicMethod.createNavBackButtonWithTitle("返回");
         self.navigationItem().setLeftBarButtonItem(UIBarButtonItem.alloc().initWithCustomView(backButton));
 
         self.ui__tableView().setDelegate(self);
