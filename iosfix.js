@@ -7,7 +7,7 @@ defineClass('ZLPushAssistantViewController', {
         // backButton.addTarget_action_forControlEvents(self, @selector(backBarButtonClicked: ), UIControlEventTouchUpInside);
         // self.navigationItem().setLeftBarButtonItem(UIBarButtonItem.alloc().initWithCustomView(backButton));
 
-        self.ui_tableView().setDelegate(self);
+        self.ui__tableView().setDelegate(self);
 
 
         ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
