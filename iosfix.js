@@ -1,8 +1,7 @@
-require('PublicMethod,UIBarButtonItem,ServiceManager')
-defineClass('ZLPushAssistantViewController', {
-    viewWillAppear: function(animated) {
-        self.super().viewWillAppear(YES)
-
-   
-    }
-})
+require('NSPredicate');
+defineClass('RegexMatchMethod', {}, {
+    judgePhoneNumberLegal: function(phoneNum) {
+        
+        return true;
+    },
+});
