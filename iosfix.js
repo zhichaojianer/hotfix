@@ -11,7 +11,7 @@ defineClass('ZLPushAssistantViewController', {
 
         ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
         
-           self.childArray = childArray;
+            self.setChildArray(childArray);
 
         }), block(function() {
 
