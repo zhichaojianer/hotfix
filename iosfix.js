@@ -8,9 +8,9 @@ defineClass('ZLPushAssistantViewController', {
         ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
 
             if (childArray.count() * 44 > 180) {
-                self.selectChildTableHeightConstraint().setConstant(180);
+                __selectChildTableHeightConstraint().setConstant(180);
             } else {
-                self.selectChildTableHeightConstraint().setConstant(childArray.count() * 44);
+                __selectChildTableHeightConstraint().setConstant(childArray.count() * 44);
             }
         }), block(function() {
 
