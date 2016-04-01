@@ -1,26 +1,15 @@
-require('PublicMethod,UIBarButtonItem,ServiceManager');
-defineClass('ZLPushAssistantViewController', {
-    viewWillAppear: function(animated) {
-        self.super().viewWillAppear(YES);
+defineClass('ZLMessageViewController', {
+    configInputViewMethod: function() {
 
-        var backButton = PublicMethod.createNavBackButtonWithTitle("返回");
-        backButton.addTarget_action_forControlEvents(self, "backBarButtonClicked:", 6);
-        self.navigationItem().setLeftBarButtonItem(UIBarButtonItem.alloc().initWithCustomView(backButton));
+        //知了客服隐藏语音功能
+        if (self.currentConversation().toUserInfo().userId() == 1000) {
+            self.inputImageLeftConstraint().setConstant(10);
+            self.keyBroadButton().setHidden(YES);
+        } else {
+            self.inputImageLeftConstraint().setConstant(44);
+            self.keyBroadButton().setHidden(NO);
+        }
 
-        self.ui__tableView().setDelegate(self);
-
-        ServiceManager.getAllChildWithClassId_Success_failure(0, block('NSArray*', function(childArray) {
-        
-            self.setChildArray(childArray);
-
-        }), block(function() {
-
-        }));
-
-    },
-
-    backBarButtonClicked: function(sender) {
-        self.tabBarController().setSelectedIndex(1);
-        self.navigationController().popToRootViewControllerAnimated(YES);
+        self.configVoiceInputView();
     },
 });
