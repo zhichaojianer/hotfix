@@ -10,7 +10,7 @@ defineClass('ZLVIPCenterController', {
         backButton.setTitle_forState("返回", 0);
         backButton.setImage_forState(UIImage.imageNamed("public_btn_back_black"), 0);
         backButton.titleLabel().setFont(UIFont.systemFontOfSize(17));
-        backButton.addTarget_action_forControlEvents(self, selector(touchBackButton), 6);
+        backButton.addTarget_action_forControlEvents(self, "touchBackButton", 6);
         var backBarButton = UIBarButtonItem.alloc().initWithCustomView(backButton);
         self.navigationItem().setLeftBarButtonItem(backBarButton);
 
