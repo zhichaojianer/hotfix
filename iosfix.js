@@ -1,4 +1,4 @@
-require('UIColor,UIView,UILabel,UIButton,UIImage,UIFont,UIBarButtonItem');
+require('UIColor,UIView,UILabel,PublicMethod,UIBarButtonItem');
 defineClass('ZLVIPCenterController', {
     viewDidLoad: function() {
         self.super().viewDidLoad();
@@ -6,11 +6,7 @@ defineClass('ZLVIPCenterController', {
         self.setTitle("会员中心");
         self.view().setBackgroundColor(UIColor.whiteColor());
 
-        var backButton = UIButton.alloc().initWithFrame(self.view().frame());
-        backButton.setTitle_forState("返回", 0);
-        backButton.setImage_forState(UIImage.imageNamed("public_btn_back_black"), 0);
-        backButton.titleLabel().setFont(UIFont.systemFontOfSize(17));
-        backButton.addTarget_action_forControlEvents(self, "touchBackButton", 6);
+        var backButton = PublicMethod.createNavBackButtonBlackWithTitle("返回");
         var backBarButton = UIBarButtonItem.alloc().initWithCustomView(backButton);
         self.navigationItem().setLeftBarButtonItem(backBarButton);
 
