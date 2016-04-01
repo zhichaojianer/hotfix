@@ -7,6 +7,7 @@ defineClass('ZLVIPCenterController', {
         self.view().setBackgroundColor(UIColor.whiteColor());
 
         var backButton = PublicMethod.createNavBackButtonBlackWithTitle("返回");
+        backButton.addTarget_action_forControlEvents(self, "touchBackButton", 6);
         var backBarButton = UIBarButtonItem.alloc().initWithCustomView(backButton);
         self.navigationItem().setLeftBarButtonItem(backBarButton);
 
