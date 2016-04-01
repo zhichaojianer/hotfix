@@ -1,4 +1,4 @@
-require('UIColor,UIView,ColorManager,UILabel,UIScreen,UIFont,PublicMethod,UIBarButtonItem');
+require('UIColor,UIView,ColorManager,UILabel,UIScreen,UIFont');
 defineClass('ZLVIPCenterController', {
     viewDidLoad: function() {
         self.super().viewDidLoad();
@@ -18,10 +18,6 @@ defineClass('ZLVIPCenterController', {
         label.setFont(UIFont.systemFontOfSize(13));
         self.view().addSubview(label);
 
-        var backButton = PublicMethod.createNavBackButtonBlackWithTitle("返回");
-        backButton.addTarget_action_forControlEvents(self, @selector(touchBackButton), 6);
-        var backBarButton = UIBarButtonItem.alloc().initWithCustomView(backButton);
-        self.navigationItem().setLeftBarButtonItem(backBarButton);
     },
     viewWillAppear: function(animated) {
         self.super().viewWillAppear(animated);
