@@ -10,7 +10,7 @@ defineClass('ZLVIPCenterController', {
         view.setBackgroundColor(UIColor.whiteColor());
         self.view().addSubview(view);
 
-        var label = UILabel.alloc().initWithFrame(CGRectMake(10, 88,300, 20));
+        var label = UILabel.alloc().initWithFrame(self.view().frame());
         label.setText("会员中心全面升级中，敬请期待哦");
         label.setTextColor(UIColor.darkGrayColor());
         label.setTextAlignment(1);
