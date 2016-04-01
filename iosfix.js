@@ -6,7 +6,7 @@ defineClass('ZLVIPCenterController', {
         self.setTitle("会员中心");
         self.view().setBackgroundColor(UIColor.whiteColor());
 
-        var backButton = UIButton.alloc().initWithFrame({x:0, y:0, width:60, height:44});
+        var backButton = UIButton.alloc().initWithFrame(self.view().frame());
         backButton.setTitle_forState("返回", 0);
         backButton.setImage_forState(UIImage.imageNamed("public_btn_back_black"), 0);
         backButton.titleLabel().setFont(UIFont.systemFontOfSize(17));
