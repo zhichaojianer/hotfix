@@ -1,35 +1,29 @@
-defineClass('ZLMessageViewController', {
-    configInputViewMethod: function() {
+require('UIColor,UIView,ColorManager,UILabel,UIScreen,UIFont,PublicMethod,UIBarButtonItem');
+defineClass('ZLVIPCenterController', {
+    viewDidLoad: function() {
+        self.super().viewDidLoad();
 
-        //知了客服隐藏语音功能
-        if (self.currentConversation().toUserInfo().userId() == 1000) {
-            self.inputImageLeftConstraint().setConstant(10);
-            self.keyBroadButton().setHidden(YES);
-        } else {
-            self.inputImageLeftConstraint().setConstant(44);
-            self.keyBroadButton().setHidden(NO);
-        }
+        self.setTitle("会员中心");
+        self.view().setBackgroundColor(UIColor.whiteColor());
 
-        self.configVoiceInputView();
+        var view = UIView.alloc().initWithFrame(self.view().frame());
+        view.setBackgroundColor(ColorManager.colorWithViewBackground());
+        self.view().addSubview(view);
+
+        var label = UILabel.alloc().initWithFrame(CGRectMake(10, 200, UIScreen.mainScreen().bounds().size().width() - 10 * 2, 20));
+        label.setText("会员中心全面升级中，敬请期待哦");
+        label.setTextColor(UIColor.darkGrayColor());
+        label.setTextAlignment(1);
+        label.setBackgroundColor(UIColor.clearColor());
+        label.setFont(UIFont.systemFontOfSize(13));
+        self.view().addSubview(label);
+
+        var backButton = PublicMethod.createNavBackButtonBlackWithTitle("返回");
+        backButton.addTarget_action_forControlEvents(self, @selector(touchBackButton), 6);
+        var backBarButton = UIBarButtonItem.alloc().initWithCustomView(backButton);
+        self.navigationItem().setLeftBarButtonItem(backBarButton);
     },
-});
-
-defineClass('PerInfoViewController', {
-    tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
-        tableView.deselectRowAtIndexPath_animated(indexPath, YES);
-
-        var rowNum = indexPath.row();
-        var cellIdentifier = self.infoTitleArray().objectAtIndex(rowNum);
-        if (cellIdentifier.isEqualToString("HeadImageCellIdentifier")) {
-            self.imagePickerActionMethod();
-        } else if (cellIdentifier.isEqualToString("UserNameCellIdentifier")) {
-            self.showNameViewController();
-        } else if (cellIdentifier.isEqualToString("UserGenderCellIdentifier")) {
-            self.showGenderActionSheet();
-        } else if (cellIdentifier.isEqualToString("UserCardCellIdentifier")) {
-            self.showPickCardInfoViewController();
-        } else if (cellIdentifier.isEqualToString("ZLAddressCellIdentifier")) {
-            self.showZLAddressManageViewController();
-        }
+    viewWillAppear: function(animated) {
+        self.super().viewWillAppear(animated);
     },
 });
