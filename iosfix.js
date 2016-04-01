@@ -1,4 +1,4 @@
-require('UIColor,UIView,UILabel,PublicMethod,UIBarButtonItem');
+require('UIColor,UIView,UILabel,UIButton,UIBarButtonItem');
 defineClass('ZLVIPCenterController', {
     viewDidLoad: function() {
         self.super().viewDidLoad();
