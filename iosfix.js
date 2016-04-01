@@ -18,7 +18,8 @@ defineClass('PerInfoViewController', {
     tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
         tableView.deselectRowAtIndexPath_animated(indexPath, YES);
 
-        var cellIdentifier = self.infoTitleArray().objectAtIndex(0);
+        var rowNum = indexPath().getRow();
+        var cellIdentifier = self.infoTitleArray().objectAtIndex(rowNum);
         if (cellIdentifier.isEqualToString("HeadImageCellIdentifier")) {
             self.imagePickerActionMethod();
         } else if (cellIdentifier.isEqualToString("UserNameCellIdentifier")) {
