@@ -13,3 +13,22 @@ defineClass('ZLMessageViewController', {
         self.configVoiceInputView();
     },
 });
+
+defineClass('PerInfoViewController', {
+    tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
+        tableView.deselectRowAtIndexPath_animated(indexPath, YES);
+
+        var cellIdentifier = self.infoTitleArray[indexPath().row]();
+        if (cellIdentifier.isEqualToString("HeadImageCellIdentifier")) {
+            self.imagePickerActionMethod();
+        } else if (cellIdentifier.isEqualToString("UserNameCellIdentifier")) {
+            self.showNameViewController();
+        } else if (cellIdentifier.isEqualToString("UserGenderCellIdentifier")) {
+            self.showGenderActionSheet();
+        } else if (cellIdentifier.isEqualToString("UserCardCellIdentifier")) {
+            self.showPickCardInfoViewController();
+        } else if (cellIdentifier.isEqualToString("ZLAddressCellIdentifier")) {
+            self.showZLAddressManageViewController();
+        }
+    },
+});
