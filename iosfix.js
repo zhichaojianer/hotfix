@@ -6,12 +6,17 @@ defineClass('ZLVIPCenterController', {
         self.setTitle("会员中心");
         self.view().setBackgroundColor(UIColor.whiteColor());
 
+        var backButton = PublicMethod.createNavBackButtonBlackWithTitle("返回");
+        backButton.addTarget_action_forControlEvents(self, @selector(touchBackButton), 6);
+        var backBarButton = UIBarButtonItem.alloc().initWithCustomView(backButton);
+        self.navigationItem().setLeftBarButtonItem(backBarButton);
+
     },
     viewWillAppear: function(animated) {
         self.super().viewWillAppear(animated);
 
         var view = UIView.alloc().initWithFrame(self.view().frame());
-        view.setBackgroundColor(UIColor.whiteColor());
+        view.setBackgroundColor(UIColor.lightGrayColor());
         self.view().addSubview(view);
 
         var label = UILabel.alloc().initWithFrame(self.view().frame());
