@@ -6,6 +6,10 @@ defineClass('ZLVIPCenterController', {
         self.setTitle("会员中心");
         self.view().setBackgroundColor(UIColor.whiteColor());
 
+    },
+    viewWillAppear: function(animated) {
+        self.super().viewWillAppear(animated);
+
         var view = UIView.alloc().initWithFrame(self.view().frame());
         view.setBackgroundColor(UIColor.whiteColor());
         self.view().addSubview(view);
@@ -17,9 +21,5 @@ defineClass('ZLVIPCenterController', {
         label.setBackgroundColor(UIColor.clearColor());
         label.setFont(UIFont.systemFontOfSize(13));
         self.view().addSubview(label);
-
-    },
-    viewWillAppear: function(animated) {
-        self.super().viewWillAppear(animated);
     },
 });
