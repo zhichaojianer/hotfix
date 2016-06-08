@@ -7,6 +7,7 @@ defineClass('NotifyCell', {
             zlRichtxtInfo.setContenturl(NSURL.URLWithString(jsonObject["contenturl"].stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)));
         } else if (!NSString.checkNullNotContainsLineFeedString(jsonObject["detailUrl"])) {
             zlRichtxtInfo.setContenturl(NSURL.URLWithString(jsonObject["detailUrl"].stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)));
+            zlRichtxtInfo.setRichtxtType(1);
         }
         self.lectureShareBlock()(zlRichtxtInfo);
     },
