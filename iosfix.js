@@ -1,42 +1,13 @@
-
-defineClass('CreditStoreViewController', {
-    viewWillAppear: function(animated) {
-        self.super().viewWillAppear(YES);
-        self.webView().setDelegate(self);
-        self.navigationController().setNavigationBarHidden_animated(YES, NO);
+require('NSString,ZLRichtxtInfo,NSURL');
+defineClass('NotifyCell', {
+    lectureShareViewTapAction: function(gestureRecognizer) {
+        var jsonObject = NSString.jsonObjectWithNSString(self.notifyMessage().messageInfo().shareJson());
+        var zlRichtxtInfo = ZLRichtxtInfo.getRichtxtInfoWithDict(jsonObject);
+        if (!NSString.checkNullNotContainsLineFeedString(jsonObject["contenturl"])) {
+            zlRichtxtInfo.setContenturl(NSURL.URLWithString(jsonObject["contenturl"].stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)));
+        } else if (!NSString.checkNullNotContainsLineFeedString(jsonObject["detailUrl"])) {
+            zlRichtxtInfo.setContenturl(NSURL.URLWithString(jsonObject["detailUrl"].stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)));
+        }
+        self.lectureShareBlock()(zlRichtxtInfo);
     },
-    viewWillDisappear: function(animated) {
-        self.super().viewWillDisappear(YES);
-        self.webView().setDelegate(null);
-        self.navigationController().setNavigationBarHidden_animated(NO, NO);
-    },
-});
-
-require('ServiceManager');
-defineClass('ZLACameraPlayerViewController', {
-    getPlayAddressRequestWithDeviceId: function(zlaDeviceId) {
-        ServiceManager.getPlayAddressWithDeviceId_success_failure(zlaDeviceId, block('ZLAMediaPlayerInfo*', function(zlaMediaPlayerInfo) {
-                self.ui_offlineImageView().setHidden(YES);
-                self.setZlaMediaPlayerInfo(zlaMediaPlayerInfo);
-                self.startPlayback();
-            } else {
-                self.ui_activeView().stopAnimating();
-                self.ui_activeView().setHidden(YES);
-                self.ui_networkFailureLabel().setHidden(NO);
-                self.ui_networkFailureLabel().setText("设备已离线");
-                self.ui_offlineImageView().setHidden(NO);
-            }
-        }), block('NSString*', function(failureMsg) {
-            self.ui_activeView().stopAnimating();
-            self.ui_activeView().setHidden(YES);
-            self.ui_networkFailureLabel().setHidden(NO);
-            if (failureMsg == null) {
-                self.ui_networkFailureLabel().setText("网络连接失败");
-            } else {
-                self.ui_networkFailureLabel().setText(failureMsg);
-            }
-            self.ui_networkFailureLabel().setText(failureMsg);
-            self.ui_offlineImageView().setHidden(NO);
-        }));
-},
 });
