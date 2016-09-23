@@ -19,11 +19,8 @@ defineClass('ZLChosenTableController', {
             var model = self.ViewModel.zlbannerList[i]();
             var imageView = UIImageView.alloc().initWithFrame(CGRectMake(width * i, 0, width, height));
             imageView.yy__setImageWithURL_placeholder(model.image(), null);
-            imageView.setBackgroundColor(ColorManager.placeholderBackgroundColor());
             imageView.setClipsToBounds(YES);
             imageView.setContentMode(UIViewContentModeScaleAspectFill);
-            var tap = UITapGestureRecognizer.alloc().initWithTarget_action(self, @selector(tapBannerAction: ));
-            imageView.addGestureRecognizer(tap);
             tap.view().setTag(i + 1);
             imageView.setUserInteractionEnabled(YES);
             self.ui__scrollView().addSubview(imageView);
