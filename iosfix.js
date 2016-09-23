@@ -20,7 +20,7 @@ defineClass('ZLChosenTableController', {
             var imageView = UIImageView.alloc().initWithFrame(CGRectMake(width * i, 0, width, height));
             imageView.yy__setImageWithURL_placeholder(model.image(), null);
             imageView.setClipsToBounds(YES);
-            imageView.setContentMode(UIViewContentModeScaleAspectFill);
+            imageView.setContentMode(2);
             tap.view().setTag(i + 1);
             imageView.setUserInteractionEnabled(YES);
             self.ui__scrollView().addSubview(imageView);
