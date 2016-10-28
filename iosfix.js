@@ -1,11 +1,11 @@
 require('ZLBusinessAdjustmentInstance,AppDelegate');
 defineClass('ZLLaunchPageViewController', {
     touchADButton: function(sender) {
-        if (__url == null) {
+        if (self.url() == null) {
             return;
         }
 
-        ZLBusinessAdjustmentInstance.sharedInstance().taskTypeProcessingMethod_rootViewController(__url, AppDelegate.getAppDelegate().window().rootViewController());
+        ZLBusinessAdjustmentInstance.sharedInstance().taskTypeProcessingMethod_rootViewController(self.url(), AppDelegate.getAppDelegate().window().rootViewController());
 
         self.removeViewFromSuperview();
     },
