@@ -5,8 +5,8 @@ defineClass('CreditWebViewController', {
 
         var array = url.componentsSeparatedByString("&token=");
         if (array.count() == 3) {
-            url = array[0].stringByAppendingString("&token=");
-            url = url.stringByAppendingString(array[2]);
+            url = array.objectAtIndex(0).stringByAppendingString("&token=");
+            url = url.stringByAppendingString(array.objectAtIndex(2));
         }
         self.setRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(url)));
 
