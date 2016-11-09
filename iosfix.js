@@ -1,12 +1,10 @@
-require('ZLBusinessAdjustmentInstance,AppDelegate');
-defineClass('ZLLaunchPageViewController', {
-    touchADButton: function(sender) {
-        if (self.url() == null) {
-            return;
-        }
+require('NSString,NSURL,UIApplication');
+defineClass('ZLACameraPlayerViewController', {
+    startPlayback: function() {
 
-        ZLBusinessAdjustmentInstance.sharedInstance().taskTypeProcessingMethod_rootViewController(self.url(), AppDelegate.getAppDelegate().window().rootViewController());
-
-        self.removeViewFromSuperview();
+        var string = NSString.stringWithFormat("%@?playUrl=%@", BabyVideoAddress, self.zlaMediaPlayerInfo().zlaSrc());
+        var videoUrl = NSURL.URLWithString(string);
+        UIApplication.sharedApplication().openURL(videoUrl);
+        self.navigationController().popViewControllerAnimated(YES);
     },
 });
