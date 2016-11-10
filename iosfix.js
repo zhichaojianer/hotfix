@@ -1,4 +1,4 @@
-defineClass('PublicMethod', {width: a, height: b}, {
+defineClass('PublicMethod', （size）, {
     getM80AttributedLabelDisplaySize_width: function(label, width) {
         var size = label.sizeThatFits({width: 200, height:10000});
 
@@ -9,8 +9,9 @@ defineClass('PublicMethod', {width: a, height: b}, {
         if (size.height() < 28) {
             size.setHeight(28);
         }
-        var a = size.width() + 25;
-        var b = size.height() + 10;
-        return {a, b};
+        size.setWidth(size.width() + 25);
+        size.setHeight(size.height() + 10);
+
+        return size;
     },
 });
