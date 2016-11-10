@@ -9,11 +9,8 @@ defineClass('PublicMethod', {width: a, height: b}, {
         if (size.height() < 28) {
             size.setHeight(28);
         }
-        size.setWidth(size.width() + 25);
-        size.setHeight(size.height() + 10);
-        
-        var a = size.width();
-        var b = size.height();
+        var a = size.width() + 25;
+        var b = size.height() + 10;
         return {a, b};
     },
 });
