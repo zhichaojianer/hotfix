@@ -1,4 +1,4 @@
-defineClass('PublicMethod', {CGSize}, {
+defineClass('PublicMethod', {width: a, height: b}, {
     getM80AttributedLabelDisplaySize_width: function(label, width) {
         var size = label.sizeThatFits({width: 200, height:10000});
 
@@ -12,6 +12,6 @@ defineClass('PublicMethod', {CGSize}, {
         size.setWidth(size.width() + 25);
         size.setHeight(size.height() + 10);
 
-        return size;
+        return {size.width(), size.height()};
     },
 });
