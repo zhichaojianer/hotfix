@@ -1,7 +1,6 @@
 defineClass('PublicMethod', {}, {
     getM80AttributedLabelDisplaySize_width: function(label, width) {
-        var tempSize = CGSizeMake(200, 10000);
-        var size = label.sizeThatFits(tempSize);
+        var size = label.sizeThatFits({width: 200, height:10000});
 
         if (size.width() < 10) {
             size.setWidth(10);
