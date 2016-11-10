@@ -1,4 +1,5 @@
-require('PublicMethod').getM80AttributedLabelDisplaySize_width(function(label, width) {
+defineClass('PublicMethod', {}, {
+    require('PublicMethod').getM80AttributedLabelDisplaySize_width: function(label, width) {
         var size = label.sizeThatFits({width: 200, height:10000});
 
         if (size.width() < 10) {
@@ -12,4 +13,5 @@ require('PublicMethod').getM80AttributedLabelDisplaySize_width(function(label, w
         size.setHeight(size.height() + 10);
 
         return size;
-    });
+    },
+});
