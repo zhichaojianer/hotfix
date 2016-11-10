@@ -11,7 +11,9 @@ defineClass('PublicMethod', {width: a, height: b}, {
         }
         size.setWidth(size.width() + 25);
         size.setHeight(size.height() + 10);
-
-        return {size.width(), size.height()};
+        
+        var width = size.width();
+        var height = size.height();
+        return {width, height};
     },
 });
