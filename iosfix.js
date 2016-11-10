@@ -1,15 +1,18 @@
-require('NSURLRequest,NSURL');
-defineClass('CreditWebViewController', {
-    initWithUrl: function(url) {
-        self = self.super().init();
+defineClass('PublicMethod', {}, {
+    getM80AttributedLabelDisplaySize_width: function(label, width) {
+        var tempSize = CGSizeMake(200, 10000);
+        var size = label.sizeThatFits(tempSize);
 
-        var array = url.componentsSeparatedByString("&token=");
-        if (array.count() == 3) {
-            url = array.objectAtIndex(0).stringByAppendingString("&token=");
-            url = url.stringByAppendingString(array.objectAtIndex(2));
+        if (size.width() < 10) {
+            size.setWidth(10);
         }
-        self.setRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(url)));
 
-        return self;
+        if (size.height() < 28) {
+            size.setHeight(28);
+        }
+        size.setWidth(size.width() + 25);
+        size.setHeight(size.height() + 10);
+
+        return size;
     },
 });
