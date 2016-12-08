@@ -1,17 +1,16 @@
-defineClass('PublicMethod', {}, {
-    getM80AttributedLabelDisplaySize_width: function(label, width) {
-        var size = label.sizeThatFits({width: 200, height:10000});
+require('ZLDefaults');
+defineClass('AppDelegate', {
+    checkVersion: function() {
+        ZLDefaults.sharedInstance().setRedPointShow(NO);
 
-        if (size.width() < 10) {
-            size.setWidth(10);
-        }
+        _zlHomeViewModel.checkVersionWithComplete(block(function() {
 
-        if (size.height() < 28) {
-            size.setHeight(28);
-        }
-        size.setWidth(size.width() + 25);
-        size.setHeight(size.height() + 10);
-
-        return size;
+            if (ZLDefaults.sharedInstance().redPointShow()) {
+                _tabBarVC.tabBar().showRedPointOnItemIndex(3);
+            } else {
+                _tabBarVC.tabBar().hideRedPointOnItemIndex(3);
+            }
+            self.showVersionUpdateAlertView();
+        }));
     },
 });
